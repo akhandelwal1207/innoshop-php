@@ -13,6 +13,8 @@ jobs:
     #   - https://gh.io/using-larger-runners (GitHub.com only)
     # Consider using larger runners or machines with greater resources for possible analysis time improvements.
     runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    env:
+      GITHUB_REF: refs/tags/${{ github.event.release.tag_name }}
     permissions:
       # required for all workflows
       security-events: write
